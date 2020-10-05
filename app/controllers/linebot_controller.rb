@@ -31,13 +31,22 @@ class LinebotController < ApplicationController
           when "3"
             push = ["この状況でどうやって元気出すんですか？\nとりあえず焼肉おごってください。", "はん？？どつきますよ？（怒）"].sample
           when "4"
-            push = "なんて日だ！！！！！！"
+            originalContentUrl = 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing'
+            previewImageUrl = 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing'
           else
             push = "説明をちゃんと読んでください。数字を選んでって言ってるじゃないですか。\n怒りますよ。"
           end
         end
         
-        message = [{ type: 'text', text: push }, { type: 'text', text: explain }]
+        if push
+          message = [{ type: 'text', text: push }, { type: 'text', text: explain }]
+        else
+          message = {
+            type: 'image',
+            originalContentUrl: originalContentUrl,
+            previewImageUrl: previewImageUrl
+          }
+        end
 
         client.reply_message(event['replyToken'], message)
       end
