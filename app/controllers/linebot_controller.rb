@@ -31,7 +31,8 @@ class LinebotController < ApplicationController
           when "3"
             push = ["この状況でどうやって元気出すんですか？\nとりあえず焼肉おごってください。", "はん？？どつきますよ？（怒）"].sample
           when "4"
-            push = "なんて日だ！！！！！！"
+            originalContentUrl = 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing'
+            previewImageUrl = 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing'
           else
             push = "説明をちゃんと読んでください。数字を選んでって言ってるじゃないですか。\n怒りますよ。"
           end
@@ -42,8 +43,8 @@ class LinebotController < ApplicationController
         else
           message = {
             type: 'image',
-            originalContentUrl: 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing',
-            previewImageUrl: 'https://drive.google.com/file/d/1iUZGaYGJq6n9Y281JYnIVQ__QJbvcPDs/view?usp=sharing'
+            originalContentUrl: originalContentUrl,
+            previewImageUrl: previewImageUrl
           }
         end
 
