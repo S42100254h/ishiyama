@@ -40,6 +40,7 @@ class LinebotController < ApplicationController
         message = [{ type: 'text', text: push }, { type: 'text', text: explain }]
 
         client.reply_message(event['replyToken'], message)
+      end
     end
     head :ok
   end
